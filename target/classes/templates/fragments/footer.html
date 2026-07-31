@@ -1,0 +1,17 @@
+<div th:fragment="footer">
+  <footer class="page-footer white">
+    <div class="container">
+      <div class="row">
+        <div class="col s12 center black-text">© <span th:text="${#dates.format(#dates.createNow(),'yyyy')}">2026</span> Timetable System</div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function(){
+      var elems = document.querySelectorAll('select');
+      if (typeof M !== 'undefined' && M.FormSelect) M.FormSelect.init(elems);
+    });
+  </script>
+</div>

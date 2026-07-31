@@ -1,0 +1,64 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+  <head th:replace="fragments/header :: head"></head>
+  <body>
+    <div th:replace="fragments/header :: nav"></div>
+
+    <div class="container page-shell">
+      <div class="card z-depth-1 page-card">
+        <div class="card-content">
+          <div class="page-header">
+            <div class="page-title-group">
+              <h4 class="blue-text text-darken-2">University Timetable</h4>
+              <p class="grey-text text-darken-1">Review scheduled classes and manage entries at a glance.</p>
+            </div>
+            <div class="page-actions">
+              <a th:href="@{/timetable/new}" class="btn waves-effect waves-light green">Add New Entry</a>
+              <a th:href="@{/timetable/export}" class="btn waves-effect waves-light blue"><i class="material-icons left">file_download</i>Export</a>
+              <a th:href="@{/}" class="btn-flat">Home</a>
+            </div>
+          </div>
+
+          <div class="section">
+            <div class="table-wrapper">
+              <table class="highlight responsive-table">
+              <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>Teacher</th>
+                  <th>Subject</th>
+                  <th>Day</th>
+                  <th>Batch</th>
+                  <th>Period</th>
+                  <th>Time</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr th:each="e : ${entries}">
+                  <td th:text="${e.id}"></td>
+                  <td th:text="${e.teacher.name}"></td>
+                  <td th:text="${e.subject.name}"></td>
+                  <td th:text="${e.timeSlot.dayOfWeek}"></td>
+                  <td th:text="${e.batch.name}"></td>
+                  <td th:text="${e.timeSlot.periodNumber}"></td>
+                  <td th:text="${e.timeSlot.startTime} + ' - ' + ${e.timeSlot.endTime}"></td>
+                  <td>
+                    <form th:action="@{/timetable/delete/{id}(id=${e.id})}" method="post">
+                      <button type="submit" class="btn red darken-1" onclick="return confirm('Delete this entry?');">
+                        <i class="material-icons">delete</i>
+                      </button>
+                    </form>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div th:replace="fragments/footer :: footer"></div>
+  </body>
+</html>

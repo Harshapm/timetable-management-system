@@ -1,0 +1,45 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+  <head th:replace="fragments/header :: head"></head>
+  <body>
+    <div th:replace="fragments/header :: nav"></div>
+
+    <div class="container page-shell">
+      <div class="card z-depth-1 page-card">
+        <div class="card-content">
+          <div class="page-header">
+            <div class="page-title-group">
+              <h4 class="blue-text text-darken-2">Batches</h4>
+              <p class="grey-text text-darken-1">Track student groups and manage class sections easily.</p>
+            </div>
+            <div class="page-actions">
+              <a th:href="@{/batches/new}" class="btn waves-effect waves-light blue"><i class="material-icons left">group_add</i>Add Batch</a>
+              <a th:href="@{/}" class="btn-flat">Home</a>
+            </div>
+          </div>
+
+          <div class="section">
+            <div class="table-wrapper">
+              <table class="highlight responsive-table">
+              <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>Batch Name</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr th:each="b : ${batches}">
+                  <td th:text="${b.id}"></td>
+                  <td th:text="${b.name}"></td>
+                </tr>
+              </tbody>
+            </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div th:replace="fragments/footer :: footer"></div>
+  </body>
+</html>

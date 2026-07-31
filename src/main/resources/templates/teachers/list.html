@@ -1,0 +1,49 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+  <head th:replace="fragments/header :: head"></head>
+  <body>
+    <div th:replace="fragments/header :: nav"></div>
+
+    <div class="container page-shell">
+      <div class="card z-depth-1 page-card">
+        <div class="card-content">
+          <div class="page-header">
+            <div class="page-title-group">
+              <h4 class="blue-text text-darken-2">Teachers</h4>
+              <p class="grey-text text-darken-1">Maintain teacher profiles and department assignments.</p>
+            </div>
+            <div class="page-actions">
+              <a th:href="@{/teachers/new}" class="btn waves-effect waves-light blue"><i class="material-icons left">person_add</i>Add Teacher</a>
+              <a th:href="@{/}" class="btn-flat">Home</a>
+            </div>
+          </div>
+
+          <div class="section">
+            <div class="table-wrapper">
+              <table class="highlight responsive-table">
+              <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>Name</th>
+                  <th>Email</th>
+                  <th>Department</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr th:each="t : ${teachers}">
+                  <td th:text="${t.id}"></td>
+                  <td th:text="${t.name}"></td>
+                  <td th:text="${t.email}"></td>
+                  <td th:text="${t.department}"></td>
+                </tr>
+              </tbody>
+            </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div th:replace="fragments/footer :: footer"></div>
+  </body>
+</html>

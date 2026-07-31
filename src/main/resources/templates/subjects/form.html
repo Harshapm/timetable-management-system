@@ -1,0 +1,47 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+  <head th:replace="fragments/header :: head"></head>
+  <body>
+    <div th:replace="fragments/header :: nav"></div>
+
+    <div class="container page-shell">
+      <div class="card z-depth-1 page-card">
+        <div class="card-content">
+          <div class="page-header">
+            <div class="page-title-group">
+              <h4 class="blue-text text-darken-2">Add / Edit Subject</h4>
+              <p class="grey-text text-darken-1">Keep subject information precise and easy to scan.</p>
+            </div>
+          </div>
+          <form th:action="@{/subjects}" th:object="${subject}" method="post" class="page-form section">
+            <div class="row">
+              <div class="input-field col s12 m6">
+                <input id="code" type="text" class="validate" th:field="*{code}" required />
+                <label for="code">Code</label>
+              </div>
+
+              <div class="input-field col s12 m6">
+                <input id="name" type="text" class="validate" th:field="*{name}" required />
+                <label for="name">Name</label>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="input-field col s12">
+                <input id="credits" type="number" class="validate" th:field="*{credits}" required />
+                <label for="credits">Credits</label>
+              </div>
+            </div>
+
+            <div class="form-actions">
+              <a th:href="@{/subjects}" class="btn-flat">Back to List</a>
+              <button type="submit" class="btn waves-effect waves-light blue">Save</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <div th:replace="fragments/footer :: footer"></div>
+  </body>
+</html>

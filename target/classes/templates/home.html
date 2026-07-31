@@ -1,0 +1,110 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+  <head th:replace="fragments/header :: head"></head>
+  <body>
+    <div th:replace="fragments/header :: nav"></div>
+
+    <div class="container page-shell">
+      <div class="hero-panel center-align">
+        <h3 class="blue-text text-darken-2">Management Dashboard</h3>
+        <p class="grey-text text-darken-1">Welcome back! Here is an overview of your university schedule.</p>
+      </div>
+
+      <div class="row">
+        <div class="col s12 m6 l4">
+          <div class="card hoverable page-card dashboard-card bg-gradient-primary">
+            <div class="card-content center-align white-text">
+              <i class="material-icons large">person</i>
+              <h5>Teachers</h5>
+              <h3 th:text="${teacherCount}">0</h3>
+            </div>
+            <div class="card-action">
+              <a th:href="@{/teachers}" class="btn white black-text dashboard-card-btn">Manage</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col s12 m6 l4">
+          <div class="card hoverable page-card dashboard-card bg-gradient-success">
+            <div class="card-content center-align white-text">
+              <i class="material-icons large">menu_book</i>
+              <h5>Subjects</h5>
+              <h3 th:text="${subjectCount}">0</h3>
+            </div>
+            <div class="card-action">
+              <a th:href="@{/subjects}" class="btn white black-text dashboard-card-btn">Manage</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col s12 m6 l4">
+          <div class="card hoverable page-card dashboard-card bg-gradient-info">
+            <div class="card-content center-align white-text">
+              <i class="material-icons large">groups</i>
+              <h5>Batches</h5>
+              <h3 th:text="${batchCount}">0</h3>
+            </div>
+            <div class="card-action">
+              <a th:href="@{/batches}" class="btn white black-text dashboard-card-btn">Manage</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col s12 m6 l4">
+          <div class="card hoverable page-card dashboard-card bg-gradient-dark">
+            <div class="card-content center-align white-text">
+              <i class="material-icons large">schedule</i>
+              <h5>Time Slots</h5>
+              <h3 th:text="${slotCount}">0</h3>
+            </div>
+            <div class="card-action">
+              <a th:href="@{/time-slots}" class="btn white black-text dashboard-card-btn">Manage Slots</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col s12 m6 l4">
+          <div class="card hoverable page-card dashboard-card bg-gradient-warning">
+            <div class="card-content center-align white-text">
+              <i class="material-icons large">table_chart</i>
+              <h5>Classes Scheduled</h5>
+              <h3 th:text="${timetableCount}">0</h3>
+            </div>
+            <div class="card-action">
+              <a th:href="@{/timetable}" class="btn white black-text dashboard-card-btn">Full Timetable</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col s12">
+          <div class="card z-depth-1 page-card">
+            <div class="card-content center-align">
+              <h5 class="blue-text text-darken-2">Smart Scheduling Tools</h5>
+              <div class="tool-actions section">
+                <a th:href="@{/timetable/new}" class="btn waves-effect waves-light blue btn-large" style="margin-right:12px">
+                  <i class="material-icons left">add</i>Manual Entry
+                </a>
+
+                <form th:action="@{/timetable/generate}" method="post" style="display:inline">
+                  <button type="submit" class="btn waves-effect waves-light green btn-large" style="margin-right:12px">
+                    <i class="material-icons left">auto_fix_high</i>Auto-Generate
+                  </button>
+                </form>
+
+                <form th:action="@{/timetable/clear}" method="post" style="display:inline">
+                  <button type="submit" class="btn waves-effect waves-light red btn-large" onclick="return confirm('Clear all scheduled classes?');">
+                    <i class="material-icons left">delete</i>Reset Timetable
+                  </button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div th:replace="fragments/footer :: footer"></div>
+  </body>
+</html>

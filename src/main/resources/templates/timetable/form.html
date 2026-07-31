@@ -1,0 +1,70 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+  <head th:replace="fragments/header :: head"></head>
+  <body>
+    <div th:replace="fragments/header :: nav"></div>
+
+    <div class="container page-shell">
+      <div class="card z-depth-1 page-card">
+        <div class="card-content">
+          <div class="page-header">
+            <div class="page-title-group">
+              <h4 class="blue-text text-darken-2">Add Timetable Entry</h4>
+              <p class="grey-text text-darken-1">Assign a teacher, subject, slot, and batch with a clean, structured form.</p>
+            </div>
+          </div>
+
+          <div th:if="${errorMessage}" class="card-panel red lighten-4 red-text text-darken-3">
+            <strong>Conflict Detected!</strong>
+            <span th:text="${errorMessage}"></span>
+          </div>
+
+          <form th:action="@{/timetable}" th:object="${entry}" method="post" class="page-form section">
+            <div class="row">
+              <div class="input-field col s12 m6">
+                <select th:field="*{teacher}" required>
+                  <option value="" disabled selected>Select teacher</option>
+                  <option th:each="t : ${teachers}" th:value="${t.id}" th:text="${t.name} + ' (' + ${t.department} + ')'" ></option>
+                </select>
+                <label>Teacher</label>
+              </div>
+
+              <div class="input-field col s12 m6">
+                <select th:field="*{subject}" required>
+                  <option value="" disabled selected>Select subject</option>
+                  <option th:each="s : ${subjects}" th:value="${s.id}" th:text="${s.code} + ' - ' + ${s.name}" ></option>
+                </select>
+                <label>Subject</label>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="input-field col s12 m6">
+                <select th:field="*{timeSlot}" required>
+                  <option value="" disabled selected>Select time slot</option>
+                  <option th:each="ts : ${timeSlots}" th:value="${ts.id}" th:text="${ts.dayOfWeek} + ' - Period ' + ${ts.periodNumber} + ' (' + ${ts.startTime} + ' - ' + ${ts.endTime} + ')'" ></option>
+                </select>
+                <label>Time Slot</label>
+              </div>
+
+              <div class="input-field col s12 m6">
+                <select th:field="*{batch}" required>
+                  <option value="" disabled selected>Select batch</option>
+                  <option th:each="b : ${batches}" th:value="${b.id}" th:text="${b.name}" ></option>
+                </select>
+                <label>Batch</label>
+              </div>
+            </div>
+
+            <div class="form-actions">
+              <a th:href="@{/timetable}" class="btn-flat">Cancel</a>
+              <button type="submit" class="btn waves-effect waves-light blue">Save</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <div th:replace="fragments/footer :: footer"></div>
+  </body>
+</html>

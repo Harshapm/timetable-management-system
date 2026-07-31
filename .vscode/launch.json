@@ -1,0 +1,14 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Spring Boot-TimetableApplication<timetable>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "com.timetable.TimetableApplication",
+            "projectName": "timetable",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        }
+    ]
+}
