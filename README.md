@@ -179,24 +179,3 @@ Relationships:
 All pages are server-rendered using Thymeleaf.
 
 ---
-
-## Future Enhancements (Optional)
-
-- Add **Batch/Student Group** entity and include it in scheduling.
-- Improve conflict detection (room conflicts, batch conflicts, teacher availability).
-- Add authentication & authorization (login, roles).
-- Export timetable as PDF/CSV.
-- Add a simple REST API layer for frontend frameworks.
-
----
-
-## Note
-
-This is an **academic project** focused on learning:
-
-- Spring Boot basics
-- JPA/Hibernate with MySQL
-- MVC pattern with Thymeleaf
-- Basic web development and conflict detection logic
-
-It is intentionally kept simple to prioritize learning over production readiness.
