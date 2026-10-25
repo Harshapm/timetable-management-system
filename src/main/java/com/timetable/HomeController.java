@@ -38,7 +38,7 @@ public class HomeController {
         model.addAttribute("subjectCount", subjectRepository.count());
         model.addAttribute("batchCount", batchRepository.count());
         model.addAttribute("timetableCount", timetableEntryRepository.count());
-        model.addAttribute("slotCount", slotRepository.count()); // Red line will disappear now!
+        model.addAttribute("slotCount", slotRepository.count());
         return "home";
     }
 }
