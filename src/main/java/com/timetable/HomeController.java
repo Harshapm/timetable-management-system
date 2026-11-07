@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import com.timetable.repository.BatchRepository;
 import com.timetable.repository.SubjectRepository;
 import com.timetable.repository.TeacherRepository;
-import com.timetable.repository.TimeSlotRepository; // Added this import
+import com.timetable.repository.TimeSlotRepository;
 import com.timetable.repository.TimetableEntryRepository;
 
 @Controller
@@ -17,18 +17,18 @@ public class HomeController {
     private final SubjectRepository subjectRepository;
     private final BatchRepository batchRepository;
     private final TimetableEntryRepository timetableEntryRepository;
-    private final TimeSlotRepository slotRepository; // Added this field
+    private final TimeSlotRepository slotRepository;
 
     public HomeController(TeacherRepository teacherRepository, 
                           SubjectRepository subjectRepository, 
                           BatchRepository batchRepository,
                           TimetableEntryRepository timetableEntryRepository,
-                          TimeSlotRepository slotRepository) { // Added this parameter
+                          TimeSlotRepository slotRepository) {
         this.teacherRepository = teacherRepository;
         this.subjectRepository = subjectRepository;
         this.batchRepository = batchRepository;
         this.timetableEntryRepository = timetableEntryRepository;
-        this.slotRepository = slotRepository; // Added this assignment
+        this.slotRepository = slotRepository;
     }
 
     @GetMapping("/")
